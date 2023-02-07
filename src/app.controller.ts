@@ -30,4 +30,13 @@ export class AppController {
     const jobResponse = await this.appService.createJobDelay(job);
     return this.appService.jobToOrder(jobResponse);
   }
+
+  @Post('/v3/orders/http-random-delay')
+  async createOrderHttpRandomDelay(
+    @Body() order: OrderCreateRequest,
+  ): Promise<OrderCreateResponse> {
+    const job = this.appService.orderToJob(order);
+    const jobResponse = await this.appService.createJobRandomDelay(job);
+    return this.appService.jobToOrder(jobResponse);
+  }
 }

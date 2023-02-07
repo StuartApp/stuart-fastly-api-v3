@@ -28,6 +28,13 @@ export class AppService {
     };
   }
 
+  async createJobRandomDelay({ job }) {
+    const { data } = await axios.get(
+      'https://dummy-api.beta.stuart-apps.solutions/api/foo/bar',
+    );
+    return this.createJob({ job });
+  }
+
   async createJobDelay({ job }) {
     const delay = this.configService.get('httpDelayInSeconds');
     const { data } = await axios.get(`https://httpbin.org/delay/${delay}`);
