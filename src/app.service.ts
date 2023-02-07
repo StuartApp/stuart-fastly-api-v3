@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import axios from 'axios';
 import { OrderCreateResponse } from './dto/orders/create.dto';
 
 @Injectable()
 export class AppService {
+  constructor(private configService: ConfigService) {}
   orderToJob(order) {
     return {
       job: {
@@ -23,6 +26,12 @@ export class AppService {
         ],
       },
     };
+  }
+
+  async createJobDelay({ job }) {
+    const delay = this.configService.get('httpDelayInSeconds');
+    const { data } = await axios.get(`https://httpbin.org/delay/${delay}`);
+    return this.createJob({ job });
   }
 
   async createJob({ job }) {

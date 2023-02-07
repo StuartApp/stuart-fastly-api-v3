@@ -21,4 +21,13 @@ export class AppController {
     const jobResponse = await this.appService.createJob(job);
     return this.appService.jobToOrder(jobResponse);
   }
+
+  @Post('/v3/orders/http-delay')
+  async createOrderHttpDelay(
+    @Body() order: OrderCreateRequest,
+  ): Promise<OrderCreateResponse> {
+    const job = this.appService.orderToJob(order);
+    const jobResponse = await this.appService.createJobDelay(job);
+    return this.appService.jobToOrder(jobResponse);
+  }
 }

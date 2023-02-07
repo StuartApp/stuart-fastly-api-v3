@@ -29,7 +29,7 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/platform-fastify": "^9.2.1",
     "@nestjs/swagger": "^6.1.4",
-    "axios": "^1.2.1",
+    "axios": "^1.3.2",
     "nestjs-jwt-utils": "^0.1.0",
     "nestjs-opentelemetry-setup": "^2.1.0",
     "nestjs-prometheus-setup": "0.0.1",
